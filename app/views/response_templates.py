@@ -7,7 +7,7 @@ with open("app/dataset/dataset.json", "r", encoding="utf-8") as f:
     dataset = json.load(f)
 
 def dengan_footer(pesan_utama: str) -> str:
-    return f"{pesan_utama}\n\n🟢 *Ketik `menu` untuk kembali atau `selesai` untuk keluar dari chatbot.*"
+    return f"{pesan_utama}\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
 
 def cari_dari_dataset(state: str, pesan: str) -> tuple[str | None, str | None]:
     for item in dataset:
@@ -36,6 +36,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         user_state[user_id]["state"] = "main_menu"
         return dengan_footer(
             "👋 Selamat datang! Silakan pilih:\n"
+            "Silakan pilih layanan yang Anda butuhkan dengan mengetik *angka* dari daftar berikut:\n"
             "1. Ajukan Surat\n"
             "2. Pengaduan\n"
             "3. Jam Operasional\n"

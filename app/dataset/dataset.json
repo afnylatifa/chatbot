@@ -3,13 +3,13 @@
     "state": "main_menu",
     "q": ["1"],
     "next_state": "menu_ajukan",
-    "a": "📋 *Ajukan Surat*\n1. Syarat Pengajuan\n2. Cara Pengajuan"
+    "a": "📋 *Ajukan Surat*\nSilakan pilih layanan yang Anda butuhkan dengan mengetik *angka* dari daftar berikut:\n1. Syarat Pengajuan\n2. Cara Pengajuan"
   },
   {
     "state": "menu_ajukan",
     "q": ["1"],
     "next_state": "syarat_pengajuan",
-    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat Pengantar SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga/KTP/Akta Kelahiran\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Nikah\n9. Surat Penghasilan\n10. Surat Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
+    "a": "Pilih jenis surat:\nSilakan pilih layanan yang Anda butuhkan dengan mengetik *angka* dari daftar berikut:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat Pengantar SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga/KTP/Akta Kelahiran\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Nikah\n9. Surat Penghasilan\n10. Surat Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
   },
   {
     "state": "syarat_pengajuan",
@@ -81,18 +81,18 @@
     "state": "menu_ajukan",
     "q": ["2"],
     "next_state": "cara_pengajuan",
-    "a": "📨 *Syarat Surat Keterangan*\n ✅ [1] Secara Online Melalui Website\n - Kunjungi website resmi desa di Website LimapoccoeDigital.id.\n - Daftar atau login ke akun Anda.\n -Pilih jenis surat yang ingin diajukan.\n - Isi formulir pengajuan dengan lengkap.\n - Tunggu notifikasi persetujuan atau penolakan yang akan dikirim ke nomor WhatsApp yang terdaftar.\n ✅ [2] Datang Secara Langsung di Kantor Desa Limapoccoe\n - Datangi kantor desa pada jam kerja.\n - Bawa dokumen persyaratan sesuai dengan jenis surat yang ingin diurus.\n - Petugas pelayanan akan membantu proses pengajuan Anda secara langsung.\n"
+    "a": "📨 *Syarat Surat Keterangan*\n ✅ [1] Secara Online Melalui Website\n - Kunjungi website resmi desa di Website LimapoccoeDigital.id.\n - Daftar atau login ke akun Anda.\n - Pilih jenis surat yang ingin diajukan.\n - Isi formulir pengajuan dengan lengkap.\n - Tunggu notifikasi persetujuan atau penolakan yang akan dikirim ke nomor WhatsApp yang terdaftar.\n ✅ [2] Datang Secara Langsung di Kantor Desa Limapoccoe\n - Datangi kantor desa pada jam kerja.\n - Bawa dokumen persyaratan sesuai dengan jenis surat yang ingin diurus.\n - Petugas pelayanan akan membantu proses pengajuan Anda secara langsung.\n"
   },
 
   {
     "state": "main_menu",
     "q": ["2"],
-    "a": "📣 *Pengaduan*\nAjukan pengaduan melalui menu *Pengaduan* di aplikasi/website LimapoccoeDigital atau langsung ke kantor desa."
+    "a": "📣 *Pengaduan*\n✅ [1] Secara Online Melalui Website\n - Kunjungi website resmi desa di Website LimapoccoeDigital.id.\n - Daftar atau login ke akun Anda.\n - Klik menu Pengaduan, lalu tekan tombol + Buat Pengaduan.\n - Isi formulir pengajuan dengan lengkap.\n - Klik tombol Selanjutnya untuk mengirim.\n - Pengaduan Anda akan tampil dalam daftar status dan bisa dipantau secara berkala.\n ✅ [2] Datang Secara Langsung di Kantor Desa Limapoccoe\n - Datangi kantor desa pada jam kerja.\n - Sampaikan keluhan Anda secara langsung ke petugas pelayanan.\n - Petugas akan mencatat dan memproses pengaduan Anda.\n"
   },
   {
     "state": "main_menu",
     "q": ["3"],
-    "a": "🕗 *Jam Operasional Kantor Desa:*\nSenin–Jumat, pukul 08.00–15.00 WITA"
+    "a": "🕗 *Jam Operasional Kantor Desa:*\nSenin–Kamis, pukul 08.00–16.00 WITA\n Jumat, pukul 08-11-12.00 WITA"
   },
   {
     "state": "main_menu",

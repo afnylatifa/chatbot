@@ -9,9 +9,8 @@ with open("app/dataset/dataset.json", "r", encoding="utf-8") as f:
 def dengan_footer(pesan_utama: str, status: str = "pilih") -> str:
     if status == "pilih":
         footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
-    elif:
+    else:
         footer = "\n\n🟢 Ketik *menu* untuk kembali atau *selesai* untuk keluar dari chatbot."
-
     return f"{pesan_utama}{footer}"
 
 def cari_dari_dataset(state: str, pesan: str) -> tuple[str | None, str | None]:

@@ -40,20 +40,20 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
 
     state = user_state[user_id]["state"]
 
-    # 🔁 Reset ke menu utama
     if pesan in help_menu or pesan in greetings:
-    user_state[user_id] = {
-        "state": "main_menu",
-        "q": ["1"]
-    }
-    return dengan_footer(
-        "👋 Selamat datang! Silakan pilih:\n"
-        "1. Ajukan Surat\n"
-        "2. Pengaduan\n"
-        "3. Jam Operasional\n"
-        "4. Hubungi Petugas"
-    )
-
+        user_state[user_id] = {
+            "state": "main_menu",
+            "q": ["1"]
+        }
+        return dengan_footer(
+            "👋 Selamat datang! Silakan pilih:\n"
+            "1. Ajukan Surat\n"
+            "2. Pengaduan\n"
+            "3. Jam Operasional\n"
+            "4. Hubungi Petugas",
+            "main_menu",
+            ["1"]
+        )
 
     if pesan in exit_commands:
         user_state[user_id]["state"] = "main_menu"

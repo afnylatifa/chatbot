@@ -21,6 +21,7 @@ async def kirim_balasan_ke_whatsapp(nomor: str, pesan: str):
     headers = {
         "Authorization": FONNTE_TOKEN
     }
+    
     payload = {
         "target": nomor,
         "message": pesan,
@@ -30,13 +31,13 @@ async def kirim_balasan_ke_whatsapp(nomor: str, pesan: str):
 
     async with httpx.AsyncClient() as client:
         response = await client.post(url, headers=headers, data=payload)
-        print("📤 BALAS KE WA:", response.status_code, response.text)
+
 
 # Endpoint webhook yang menerima request dari Fonnte
 @router.post("/")
 async def fonnte_webhook(request: Request):
     data = await request.json()
-    print("🔵 DATA MASUK:", data)
+
 
     # Ambil pengirim dan isi pesan
     user_id = data.get("pengirim") or data.get("sender")
@@ -48,7 +49,7 @@ async def fonnte_webhook(request: Request):
 
     # Proses balasan chatbot
     balasan = get_stateful_response(user_id, pesan)
-    print("🟢 BALASAN:", balasan)
+
 
     # Kirim balasan ke WhatsApp via Fonnte
     await kirim_balasan_ke_whatsapp(user_id, balasan)

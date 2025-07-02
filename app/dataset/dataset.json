@@ -9,7 +9,7 @@
     "state": "menu_ajukan",
     "q": ["1"],
     "next_state": "syarat_pengajuan",
-    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Mahar\n9. Surat Keterangan Penghasilan\n10. Surat Penghasilan\n11. Surat Domisili\n12. Surat Keterangan Belum Memiliki Rumah"
+    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Penghasilan\n9. Surat Penghasilan\n10. Surat Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
   },
   {
     "state": "syarat_pengajuan",
@@ -57,29 +57,23 @@
     "state": "syarat_pengajuan",
     "q": ["8"],
     "next_state": "main_menu",
-    "a": "📌 *Syarat Surat Keterangan Mahar:*\n- Fotokopi KTP\n- Fotokopi KK"
+    "a": "📌 *Syarat Surat Keterangan Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["9"],
     "next_state": "main_menu",
-    "a": "📌 *Syarat Surat Keterangan Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK"
+    "a": "📌 *Syarat Surat Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["10"],
     "next_state": "main_menu",
-    "a": "📌 *Syarat Surat Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK"
-  },
-  {
-    "state": "syarat_pengajuan",
-    "q": ["11"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Domisili:*\n- Fotokopi KTP\n- Fotokopi KK"
   },
   {
     "state": "syarat_pengajuan",
-    "q": ["12"],
+    "q": ["11"],
     "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Belum Memiliki Rumah:*\n- Fotokopi KTP\n- Fotokopi KK"
   },
@@ -87,7 +81,7 @@
     "state": "menu_ajukan",
     "q": ["2"],
     "next_state": "cara_pengajuan",
-    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Mahar\n9. Surat Keterangan Penghasilan\n10. Surat Penghasilan\n11. Surat Domisili\n12. Surat Keterangan Belum Memiliki Rumah"
+    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Penghasilan\n9. Surat Penghasilan\n10. Surat Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
   },
   {
     "state": "cara_pengajuan",
@@ -131,33 +125,28 @@
     "next_state": "main_menu",
     "a": "📨 *Syarat Surat Keterangan Belum Menikah:*\n- Fotokopi KTP\n- Fotokopi KK\nAjukan langsung ke kantor desa atau lewat LimapoccoeDigital."
   },
+
   {
     "state": "cara_pengajuan",
     "q": ["8"],
-    "next_state": "main_menu",
-    "a": "📨 *Syarat Surat Keterangan Mahar:*\n- Fotokopi KTP\n- Fotokopi KK\nAjukan langsung ke kantor desa atau lewat LimapoccoeDigital."
-  },
-  {
-    "state": "cara_pengajuan",
-    "q": ["9"],
     "next_state": "main_menu",
     "a": "📨 *Syarat Surat Keterangan Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK\nAjukan langsung ke kantor desa atau lewat LimapoccoeDigital."
   },
   {
     "state": "cara_pengajuan",
-    "q": ["10"],
+    "q": ["9"],
     "next_state": "main_menu",
     "a": "📨 *Syarat Surat Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK\nAjukan langsung ke kantor desa atau lewat LimapoccoeDigital."
   },
   {
     "state": "cara_pengajuan",
-    "q": ["11"],
+    "q": ["10"],
     "next_state": "main_menu",
     "a": "📨 *Syarat Surat Domisili:*\n- Fotokopi KTP\n- Fotokopi KK\nAjukan langsung ke kantor desa atau lewat LimapoccoeDigital."
   },
   {
     "state": "cara_pengajuan",
-    "q": ["12"],
+    "q": ["11"],
     "next_state": "main_menu",
     "a": "📨 *Syarat Surat Keterangan Belum Memiliki Rumah:*\n- Fotokopi KTP\n- Fotokopi KK\nAjukan langsung ke kantor desa atau lewat LimapoccoeDigital."
   },

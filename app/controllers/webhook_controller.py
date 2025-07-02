@@ -7,7 +7,8 @@ from dotenv import load_dotenv
 router = APIRouter()
 
 # Load token dari .env
-FONNTE_TOKEN = "PaeFfyiPT88Qnetakyc2"
+load_dotenv()
+FONNTE_TOKEN = os.getenv("FONNTE_TOKEN")
 
 if not FONNTE_TOKEN:
     raise ValueError("❌ Token Fonnte tidak ditemukan. Pastikan .env berisi FONNTE_TOKEN.")

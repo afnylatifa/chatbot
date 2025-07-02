@@ -6,8 +6,10 @@ user_state = {}
 with open("app/dataset/dataset.json", "r", encoding="utf-8") as f:
     dataset = json.load(f)
 
-def dengan_footer(pesan_utama: str, status: str = "pilih") -> str:
-    if status == "pilih":
+def dengan_footer(pesan_utama: str, state: str, q: list[str]) -> str:
+    if state == "main_menu" and q == ["1"]:
+        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
+    elif state == "menu_ajukan" and q == ["1"]:
         footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
     else:
         footer = "\n\n🟢 Ketik *menu* untuk kembali atau *selesai* untuk keluar dari chatbot."

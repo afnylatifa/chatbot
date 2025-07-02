@@ -6,7 +6,10 @@ user_state = {}
 with open("app/dataset/dataset.json", "r", encoding="utf-8") as f:
     dataset = json.load(f)
 
-def dengan_footer(pesan_utama: str, state: str, q: list[str]) -> str:
+def dengan_footer(pesan_utama: str, state: str = "", q: list[str] = None) -> str:
+    if q is None:
+        q = []
+
     if state == "main_menu" and q == ["1"]:
         footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
     elif state == "menu_ajukan" and q == ["1"]:
@@ -60,6 +63,6 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     if jawaban:
         if next_state:
             user_state[user_id]["state"] = next_state
-        return dengan_footer(jawaban)
+        return dengan_footer(jawaban, state, [pesan])
 
     return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."

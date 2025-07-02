@@ -3,13 +3,13 @@
     "state": "main_menu",
     "q": ["1"],
     "next_state": "menu_ajukan",
-    "a": "📋 *Ajukan Surat*\nSilakan pilih layanan yang Anda butuhkan dengan mengetik *angka* dari daftar berikut:\n1. Syarat Pengajuan\n2. Cara Pengajuan"
+    "a": "📋 *Ajukan Surat*\n1. Syarat Pengajuan\n2. Cara Pengajuan"
   },
   {
     "state": "menu_ajukan",
     "q": ["1"],
     "next_state": "syarat_pengajuan",
-    "a": "Pilih jenis surat:\nSilakan pilih layanan yang Anda butuhkan dengan mengetik *angka* dari daftar berikut:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat Pengantar SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga/KTP/Akta Kelahiran\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Nikah\n9. Surat Penghasilan\n10. Surat Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
+    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat Pengantar SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga/KTP/Akta Kelahiran\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Nikah\n9. Surat Penghasilan\n10. Surat Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
   },
   {
     "state": "syarat_pengajuan",

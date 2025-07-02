@@ -87,7 +87,7 @@
     "state": "cara_pengajuan",
     "q": ["1"],
     "next_state": "main_menu",
-    "a": "📨 *Syarat Surat Domisili:*\n- Fotokopi KTP\n- Fotokopi KK\nAjukan langsung ke kantor desa atau lewat LimapoccoeDigital."
+    "a": "📨 *Syarat Surat Domisili:*\n- ✅ 1. Secara Online (Melalui Website) - Kunjungi website resmi desa di [alamat website]. - Daftar atau login ke akun Anda. -Pilih jenis surat yang ingin diajukan. - Isi formulir pengajuan dengan lengkap. - Tunggu notifikasi persetujuan atau penolakan yang akan dikirim ke nomor WhatsApp yang terdaftar. ✅ 2. Secara Langsung (Datang ke Kantor Desa) - Datangi kantor desa pada jam kerja. - Bawa dokumen persyaratan sesuai dengan jenis surat yang ingin diurus. - Petugas pelayanan akan membantu proses pengajuan Anda secara langsung."
   },
   {
     "state": "cara_pengajuan",

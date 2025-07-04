@@ -102,6 +102,13 @@
   {
     "state": "main_menu",
     "q": ["5"],
-    "a": "📞 *Hubungi Petugas*\nAnda bisa menghubungi petugas desa melalui WhatsApp pada jam kerja."
+    "a": "📞 *Hubungi Petugas*\nAnda bisa menghubungi petugas desa melalui WhatsApp pada jam kerja.\n\nKetik `ya` untuk menghubungi sekarang.",
+    "next_state": "konfirmasi_kontak"
+  },
+  {
+    "state": "konfirmasi_kontak",
+    "q": ["ya"],
+    "a": "✅ Silakan klik link berikut untuk menghubungi petugas via WhatsApp:\nhttps://wa.me/6285338807929",
+    "next_state": "main_menu"
   }
 ]

@@ -14,6 +14,8 @@ def dengan_footer(pesan_utama: str, state: str = "", q: list[str] = None) -> str
         footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
     elif state == "menu_ajukan" and q == ["1"]:
         footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
+    elif state == "main_menu" and q == ["5"]:
+        footer = ""
     else:
         footer = "\n\n🟢 Ketik *menu* untuk kembali atau *selesai* untuk keluar dari chatbot."
     return f"{pesan_utama}{footer}"
@@ -46,7 +48,8 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             "q": ["1"]
         }
         return dengan_footer(
-            "👋 Selamat datang! Silakan pilih:\n"
+            "👋 Hai, selamat datang di Chatbot Desa Limapoccoe!\n"
+            "Ada yang bisa kami bantu hari ini? Silakan pilih menu yang tersedia, ya 😊\n"
             "1. Ajukan Surat\n"
             "2. Pengaduan\n"
             "3. Jadwal Posyandu\n"
@@ -61,7 +64,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
 
     if pesan in thanks:
-        return "🙏 Sama-sama! Ketik *menu* untuk pilihan lainnya."
+        return "🙏 Sama-sama!"
 
     # 🔍 Cari jawaban berdasarkan state + input user
     jawaban, next_state = cari_dari_dataset(state, pesan)

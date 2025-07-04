@@ -39,7 +39,7 @@
     "state": "syarat_pengajuan",
     "q": ["5"],
     "next_state": "main_menu",
-    "a": "📌 *Syarat Surat Keterangan Kelahiran:*\n- Data kelahiran anak dari rumah sakit/puskermas\n - Fotokopi KK"
+    "a": "📌 *Syarat Surat Keterangan Kelahiran:*\n- Data kelahiran anak dari rumah sakit/puskesmas\n - Fotokopi KK"
   },
   {
     "state": "syarat_pengajuan",
@@ -108,7 +108,7 @@
   {
     "state": "konfirmasi_kontak",
     "q": ["ya"],
-    "a": "✅ Silakan klik link berikut untuk menghubungi petugas via WhatsApp:\nhttps://wa.me/6285338807929",
+    "a": "✅ Silakan klik link berikut untuk menghubungi petugas via WhatsApp:\nhttps://bit.ly/Hubungi_Petugas",
     "next_state": "main_menu"
   }
 ]

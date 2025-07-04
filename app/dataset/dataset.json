@@ -92,7 +92,7 @@
   {
     "state": "main_menu",
     "q": ["3"],
-    "a": "📅 *Jadwal Posyandu Bulanan:*\n - Posyandu Samata: setiap tanggal 10.\n - Posyandu Mappasaile & Kampala: setiap tanggal 12.\n Posyandu Jambua & Kaluku: setiap tanggal 15.\n Posyandu Watang Bengo & Barua: setiap tanggal 20.\n 📝 _Catatan: Jika bertepatan dengan hari pasar atau tanggal merah, jadwal posyandu bisa dimajukan atau diundur._"
+    "a": "📅 *Jadwal Posyandu Bulanan:*\n - Posyandu Samata: setiap tanggal 10.\n - Posyandu Mappasaile & Kampala: setiap tanggal 12.\n - Posyandu Jambua & Kaluku: setiap tanggal 15.\n - Posyandu Watang Bengo & Barua: setiap tanggal 20.\n\n 📝 _Catatan: Jika bertepatan dengan hari pasar atau tanggal merah, jadwal posyandu bisa dimajukan atau diundur._"
   },
   {
     "state": "main_menu",

@@ -49,8 +49,9 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             "👋 Selamat datang! Silakan pilih:\n"
             "1. Ajukan Surat\n"
             "2. Pengaduan\n"
-            "3. Jam Operasional\n"
-            "4. Hubungi Petugas",
+            "3. Jadwal Posyandu\n"
+            "4. Jam Operasional\n"
+            "5. Hubungi Petugas",
             "main_menu",
             ["1"]
         )

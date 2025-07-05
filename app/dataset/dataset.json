@@ -27,7 +27,7 @@
     "state": "syarat_pengajuan",
     "q": ["3"],
     "next_state": "main_menu",
-    "a": "📌 *Syarat & Cara Pengajuan Surat Pengantar SKCK:*\n- Fotokopi KTP"
+    "a": "📌 *Syarat Surat Pengantar SKCK:*\n- Fotokopi KTP"
   },
   {
     "state": "syarat_pengajuan",

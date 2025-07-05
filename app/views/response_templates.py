@@ -35,8 +35,8 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     help_menu = ["menu", "panduan", "bantuan", "help"]
     exit_commands = ["selesai", "keluar", "akhiri", "stop", "end", "batal"]
     thanks = [
-        "terima kasih", "terimakasih", "makasih", "makasi", "thanks", "thank you", 
-        "trimakasih", "trims"
+        "terima kasih", "terimakasih", "makasih", "makasi", "thanks", 
+        "thank you", "trimakasih", "trims"
     ]
 
     # ✅ Balas terima kasih kapan pun
@@ -72,7 +72,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         user_state[user_id]["state"] = "main_menu"
         return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
 
-    # 🚫 Jika user sudah selesai lihat syarat surat,  wajib ketik menu dulu
+    # 🛑 Jika user sudah selesai dan belum ketik menu lagi
     if state == "done":
         return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
 
@@ -95,10 +95,13 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         if next_state:
             user_state[user_id]["state"] = next_state
         else:
-            # ❗ Hanya syarat_pengajuan yang langsung dianggap selesai
+            # ✅ Jika dari syarat_pengajuan → akhiri sesi
             if state == "syarat_pengajuan":
+                user_state[user_id]["state"] = "done"
+            # ✅ Jika dari main_menu (pilihan 2–5) tanpa next_state → juga akhiri
+            elif state == "main_menu":
                 user_state[user_id]["state"] = "done"
         return dengan_footer(jawaban, state, [pesan])
 
-    # ❓ Jika tidak ada jawaban yang cocok
+    # ❓ Tidak dikenali
     return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."

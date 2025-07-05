@@ -36,13 +36,17 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     exit_commands = ["selesai", "keluar", "akhiri", "stop", "end", "batal"]
     thanks = ["terima kasih", "makasih", "thanks", "thank you", "trimakasih", "trims"]
 
-    # Atur state awal jika belum ada
+    # Set default state
     if user_id not in user_state:
         user_state[user_id] = {"state": "main_menu"}
 
     state = user_state[user_id]["state"]
 
-    # Jika user minta menu atau menyapa
+    # Jika user sudah selesai memilih surat, paksa ketik menu dulu
+    if state == "done":
+        return "✅ Informasi sudah ditampilkan. Ketik *menu* untuk mulai dari awal."
+
+    # Reset ke main menu jika user mengetik 'menu' atau sapaan
     if pesan in help_menu or pesan in greetings:
         user_state[user_id] = {
             "state": "main_menu",
@@ -60,16 +64,16 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             ["1"]
         )
 
-    # Jika user ingin keluar
+    # Sesi selesai
     if pesan in exit_commands:
         user_state[user_id]["state"] = "main_menu"
         return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
 
-    # Balas ucapan terima kasih
+    # Ucapan terima kasih
     if pesan in thanks:
         return "🙏 Sama-sama!"
 
-    # ⛔ Batasi angka 1–5 hanya bisa digunakan saat berada di main_menu dan jalur valid
+    # Validasi input angka sesuai state saat ini
     digit_states = {
         "main_menu": ["1", "2", "3", "4", "5"],
         "menu_ajukan": ["1", "2"],
@@ -77,17 +81,22 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         "konfirmasi_kontak": ["ya"]
     }
 
-    # Jika input angka tidak cocok dengan daftar angka sah di state saat ini
     if pesan.isdigit():
         allowed = digit_states.get(state, [])
         if pesan not in allowed:
             return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
 
-    # Cari jawaban dari dataset berdasarkan state dan pesan
+    # Cari jawaban dari dataset
     jawaban, next_state = cari_dari_dataset(state, pesan)
     if jawaban:
+        # Jika ada next_state, update state ke sana
         if next_state:
             user_state[user_id]["state"] = next_state
+        else:
+            # Kalau sedang di syarat_pengajuan dan tidak ada next_state, anggap sudah selesai
+            if state == "syarat_pengajuan":
+                user_state[user_id]["state"] = "done"
         return dengan_footer(jawaban, state, [pesan])
 
+    # Tidak dikenali
     return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."

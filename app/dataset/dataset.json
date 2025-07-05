@@ -14,67 +14,56 @@
   {
     "state": "syarat_pengajuan",
     "q": ["1"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Tidak Mampu:*\n- Fotokopi KTP\n- Fotokopi KK"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["2"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Usaha:*\n- Fotokopi KTP\n- Data Usaha yang berisi nama usaha dan lokasi usaha"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["3"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Pengantar SKCK:*\n- Fotokopi KTP"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["4"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Rekomendasi Pembelian BBM:*\n- Fotokopi KTP\n- Data Usaha BBM"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["5"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Kelahiran:*\n- Data kelahiran anak dari rumah sakit/puskesmas\n - Fotokopi KK"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["6"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Kehilangan Kartu Keluarga/KTP/Akta Kelahiran:*\n- Fotokopi KK/KTP"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["7"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Belum Menikah:*\n- Fotokopi KTP"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["8"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Nikah:*\n- Fotokopi KTP Laki-laki\n- Fotokopi KTP Perempuan\n- Buku Nikah"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["9"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK\n - Mengetahui penghasilan orang tua"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["10"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Domisili:*\n- Fotokopi KTP"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["11"],
-    "next_state": "main_menu",
     "a": "📌 *Syarat Surat Keterangan Belum Memiliki Rumah:*\n- Fotokopi KTP"
   },
   {

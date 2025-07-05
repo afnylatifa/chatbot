@@ -42,7 +42,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
 
     state = user_state[user_id]["state"]
 
-    # Jika user minta menu atau sapaan
+    # Jika user minta menu atau menyapa
     if pesan in help_menu or pesan in greetings:
         user_state[user_id] = {
             "state": "main_menu",
@@ -60,20 +60,30 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             ["1"]
         )
 
-    # Keluar dari sesi
+    # Jika user ingin keluar
     if pesan in exit_commands:
         user_state[user_id]["state"] = "main_menu"
         return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
 
-    # Ucapan terima kasih
+    # Balas ucapan terima kasih
     if pesan in thanks:
         return "🙏 Sama-sama!"
 
-    # ⛔ Blokir input angka (1–5) jika user tidak berada di state yang seharusnya
-    if pesan in ["1", "2", "3", "4", "5"] and state not in ["main_menu", "menu_ajukan", "syarat_pengajuan", "konfirmasi_kontak"]:
-        return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
+    # ⛔ Batasi angka 1–5 hanya bisa digunakan saat berada di main_menu dan jalur valid
+    digit_states = {
+        "main_menu": ["1", "2", "3", "4", "5"],
+        "menu_ajukan": ["1", "2"],
+        "syarat_pengajuan": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+        "konfirmasi_kontak": ["ya"]
+    }
 
-    # 🔍 Cari jawaban dari dataset berdasarkan state dan pesan
+    # Jika input angka tidak cocok dengan daftar angka sah di state saat ini
+    if pesan.isdigit():
+        allowed = digit_states.get(state, [])
+        if pesan not in allowed:
+            return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
+
+    # Cari jawaban dari dataset berdasarkan state dan pesan
     jawaban, next_state = cari_dari_dataset(state, pesan)
     if jawaban:
         if next_state:

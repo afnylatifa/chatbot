@@ -1,3 +1,33 @@
+import json
+
+user_state = {}
+
+# Load dataset sekali di awal
+with open("app/dataset/dataset.json", "r", encoding="utf-8") as f:
+    dataset = json.load(f)
+
+def dengan_footer(pesan_utama: str, state: str = "", q: list[str] = None) -> str:
+    if q is None:
+        q = []
+
+    if state == "main_menu" and q == ["1"]:
+        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot."
+    elif state == "menu_ajukan" and q == ["1"]:
+        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot."
+    elif state == "main_menu" and q == ["5"]:
+        footer = ""
+    else:
+        footer = "\n\n🟢 Ketik *menu* untuk kembali atau *selesai* untuk keluar dari chatbot."
+    return f"{pesan_utama}{footer}"
+
+def cari_dari_dataset(state: str, pesan: str) -> tuple[str | None, str | None]:
+    for item in dataset:
+        if item.get("state") == state:
+            for q in item.get("q", []):
+                if pesan == q.lower():
+                    return item.get("a"), item.get("next_state")
+    return None, None
+
 def get_stateful_response(user_id: str, pesan: str) -> str:
     pesan = pesan.strip().lower()
 

@@ -34,7 +34,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     greetings = ["halo", "hi", "hai", "assalamualaikum"]
     help_menu = ["menu", "panduan", "bantuan", "help"]
     exit_commands = ["selesai", "keluar", "akhiri", "stop", "end", "batal"]
-    thanks = ["terima kasih", "makasih", "thanks", "thank you", "trimakasih", "trims"]
+    thanks = ["terima kasih", "terimakasih", "makasih", "thanks", "thank you", "trimakasih", "trims"]
 
     # Set default state
     if user_id not in user_state:

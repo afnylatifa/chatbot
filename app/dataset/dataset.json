@@ -91,12 +91,12 @@
   {
     "state": "main_menu",
     "q": ["5"],
-    "a": "📞 *Hubungi Petugas*\nAnda bisa menghubungi petugas desa melalui WhatsApp pada jam kerja.\n\nKetik `ya` untuk menghubungi sekarang.",
+    "a": "📞 *Hubungi Petugas*\nAnda bisa menghubungi petugas desa melalui WhatsApp pada jam kerja.\n\nKetik *`Ya`* untuk menghubungi sekarang.",
     "next_state": "konfirmasi_kontak"
   },
   {
     "state": "konfirmasi_kontak",
-    "q": ["ya"],
+    "q": ["Ya"],
     "a": "✅ Silakan klik link berikut untuk menghubungi petugas via WhatsApp:\nhttps://bit.ly/Hubungi_Petugas",
     "next_state": "main_menu"
   }

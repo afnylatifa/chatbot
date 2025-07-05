@@ -78,7 +78,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         "main_menu": ["1", "2", "3", "4", "5"],
         "menu_ajukan": ["1", "2"],
         "syarat_pengajuan": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
-        "konfirmasi_kontak": ["ya"]
+        "konfirmasi_kontak": ["Ya"]
     }
 
     if pesan.isdigit():

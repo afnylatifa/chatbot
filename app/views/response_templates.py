@@ -66,6 +66,11 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     if pesan in thanks:
         return "🙏 Sama-sama!"
 
+    # 🚫 Jika input angka & TIDAK di main_menu → tolak
+    if pesan.isdigit() and state != "main_menu":
+        return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
+
+
     # 🔍 Cari jawaban berdasarkan state + input user
     jawaban, next_state = cari_dari_dataset(state, pesan)
     if jawaban:

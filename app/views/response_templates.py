@@ -72,7 +72,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         user_state[user_id]["state"] = "main_menu"
         return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
 
-    # 🚫 Jika user sudah selesai lihat syarat surat, wajib ketik menu dulu
+    # 🚫 Jika user sudah selesai lihat syarat surat,  wajib ketik menu dulu
     if state == "done":
         return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
 

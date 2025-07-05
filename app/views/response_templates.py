@@ -42,11 +42,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
 
     state = user_state[user_id]["state"]
 
-    # Jika user sudah selesai memilih surat, paksa ketik menu dulu
-    if state == "done":
-        return "✅ Informasi sudah ditampilkan. Ketik *menu* untuk mulai dari awal."
-
-    # Reset ke main menu jika user mengetik 'menu' atau sapaan
+    # ⚠️ Tangani menu lebih dulu, bahkan jika user sedang di 'done'
     if pesan in help_menu or pesan in greetings:
         user_state[user_id] = {
             "state": "main_menu",
@@ -64,6 +60,10 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             ["1"]
         )
 
+    # 🛑 Jika user sudah selesai dan belum ketik menu
+    if state == "done":
+        return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
+
     # Sesi selesai
     if pesan in exit_commands:
         user_state[user_id]["state"] = "main_menu"
@@ -73,7 +73,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     if pesan in thanks:
         return "🙏 Sama-sama!"
 
-    # Validasi input angka sesuai state saat ini
+    # Validasi input angka
     digit_states = {
         "main_menu": ["1", "2", "3", "4", "5"],
         "menu_ajukan": ["1", "2"],
@@ -89,14 +89,11 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     # Cari jawaban dari dataset
     jawaban, next_state = cari_dari_dataset(state, pesan)
     if jawaban:
-        # Jika ada next_state, update state ke sana
         if next_state:
             user_state[user_id]["state"] = next_state
         else:
-            # Kalau sedang di syarat_pengajuan dan tidak ada next_state, anggap sudah selesai
             if state == "syarat_pengajuan":
                 user_state[user_id]["state"] = "done"
         return dengan_footer(jawaban, state, [pesan])
 
-    # Tidak dikenali
     return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."

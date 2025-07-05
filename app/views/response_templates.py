@@ -11,9 +11,9 @@ def dengan_footer(pesan_utama: str, state: str = "", q: list[str] = None) -> str
         q = []
 
     if state == "main_menu" and q == ["1"]:
-        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
+        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot."
     elif state == "menu_ajukan" and q == ["1"]:
-        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot.*"
+        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot."
     elif state == "main_menu" and q == ["5"]:
         footer = ""
     else:
@@ -36,12 +36,13 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     exit_commands = ["selesai", "keluar", "akhiri", "stop", "end", "batal"]
     thanks = ["terima kasih", "makasih", "thanks", "thank you", "trimakasih", "trims"]
 
-    # Atur state awal
+    # Atur state awal jika belum ada
     if user_id not in user_state:
         user_state[user_id] = {"state": "main_menu"}
 
     state = user_state[user_id]["state"]
 
+    # Jika user minta menu atau sapaan
     if pesan in help_menu or pesan in greetings:
         user_state[user_id] = {
             "state": "main_menu",
@@ -59,19 +60,20 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             ["1"]
         )
 
+    # Keluar dari sesi
     if pesan in exit_commands:
         user_state[user_id]["state"] = "main_menu"
         return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
 
+    # Ucapan terima kasih
     if pesan in thanks:
         return "🙏 Sama-sama!"
 
-    # 🚫 Jika input angka & TIDAK di main_menu → tolak
-    if pesan.isdigit() and state != "main_menu":
+    # ⛔ Blokir input angka (1–5) jika user tidak berada di state yang seharusnya
+    if pesan in ["1", "2", "3", "4", "5"] and state not in ["main_menu", "menu_ajukan", "syarat_pengajuan", "konfirmasi_kontak"]:
         return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
 
-
-    # 🔍 Cari jawaban berdasarkan state + input user
+    # 🔍 Cari jawaban dari dataset berdasarkan state dan pesan
     jawaban, next_state = cari_dari_dataset(state, pesan)
     if jawaban:
         if next_state:

@@ -96,7 +96,7 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             user_state[user_id]["state"] = next_state
         else:
             # ✅ Jika dari syarat_pengajuan → akhiri sesi
-            if state == "syarat_pengajuan":
+            if state == "syarat_pengajuan" and "konfirmasi kontak":
                 user_state[user_id]["state"] = "done"
             # ✅ Jika dari main_menu (pilihan 2–5) tanpa next_state → juga akhiri
             elif state == "main_menu":

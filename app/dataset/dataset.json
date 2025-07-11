@@ -9,7 +9,7 @@
     "state": "menu_ajukan",
     "q": ["1"],
     "next_state": "syarat_pengajuan",
-    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat Pengantar SKCK\n4. Surat Keterangan Rekomendasi Pembelian BBM\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Kartu Keluarga/KTP/Akta Kelahiran\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Nikah\n9. Surat Penghasilan\n10. Surat Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
+    "a": "Pilih jenis surat:\n1. Surat Keterangan Tidak Mampu\n2. Surat Keterangan Usaha\n3. Surat Pengantar SKCK\n4. Surat Rekomendasi Pembelian BBM Bersubsidi\n5. Surat Keterangan Kelahiran\n6. Surat Keterangan Kehilangan Dokumen (Kartu Keluarga/KTP/Akta Kelahiran)\n7. Surat Keterangan Belum Menikah\n8. Surat Keterangan Nikah\n9. Surat Keterangan Penghasilan\n10. Surat Keterangan Domisili\n11. Surat Keterangan Belum Memiliki Rumah"
   },
   {
     "state": "syarat_pengajuan",
@@ -29,7 +29,7 @@
   {
     "state": "syarat_pengajuan",
     "q": ["4"],
-    "a": "📌 *Syarat Surat Keterangan Rekomendasi Pembelian BBM:*\n- Fotokopi KTP\n- Data Usaha BBM"
+    "a": "📌 *Syarat Surat Rekomendasi Pembelian BBM Bersubsidi:*\n- Fotokopi KTP\n- Data Usaha BBM"
   },
   {
     "state": "syarat_pengajuan",
@@ -39,7 +39,7 @@
   {
     "state": "syarat_pengajuan",
     "q": ["6"],
-    "a": "📌 *Syarat Surat Keterangan Kehilangan Kartu Keluarga/KTP/Akta Kelahiran:*\n- Fotokopi KK/KTP"
+    "a": "📌 *Syarat Surat Keterangan Kehilangan Dokumen (Kartu Keluarga/KTP/Akta Kelahiran):*\n- Fotokopi KK/KTP"
   },
   {
     "state": "syarat_pengajuan",
@@ -54,12 +54,12 @@
   {
     "state": "syarat_pengajuan",
     "q": ["9"],
-    "a": "📌 *Syarat Surat Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK\n - Mengetahui penghasilan orang tua"
+    "a": "📌 *Syarat Surat Keterangan Penghasilan:*\n- Fotokopi KTP\n- Fotokopi KK\n - Mengetahui penghasilan orang tua"
   },
   {
     "state": "syarat_pengajuan",
     "q": ["10"],
-    "a": "📌 *Syarat Surat Domisili:*\n- Fotokopi KTP"
+    "a": "📌 *Syarat Surat Keterangan Domisili:*\n- Fotokopi KTP"
   },
   {
     "state": "syarat_pengajuan",

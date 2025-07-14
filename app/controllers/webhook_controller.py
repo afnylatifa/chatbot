@@ -4,7 +4,7 @@ from app.views.fonnte_api import kirim_balasan_ke_whatsapp
 
 router = APIRouter()
 
-@router.post("/send")
+@router.post("/")
 async def fonnte_webhook(request: Request):
     data = await request.json()
     

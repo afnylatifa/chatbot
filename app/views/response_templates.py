@@ -31,7 +31,7 @@ def cari_dari_dataset(state: str, pesan: str) -> tuple[str | None, str | None]:
 def get_stateful_response(user_id: str, pesan: str) -> str:
     pesan = pesan.strip().lower()
 
-    greetings = ["halo", "hi", "hai", "assalamualaikum"]
+    greetings = ["halo", "hi", "hai", "assalamualaikum, pagi, siang, malam"]
     help_menu = ["menu", "panduan", "bantuan", "help"]
     exit_commands = ["selesai", "keluar", "akhiri", "stop", "end", "batal"]
     thanks = [

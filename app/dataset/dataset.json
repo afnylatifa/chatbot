@@ -69,7 +69,6 @@
   {
     "state": "menu_ajukan",
     "q": ["2"],
-    "next_state": "cara_pengajuan",
     "a": "📨 *Cara Pengajuan Surat Online dan Offline*\n ✅ [1] Secara Online Melalui Website\n - Kunjungi website resmi desa di Website LimapoccoeDigital.id.\n - Daftar atau login ke akun Anda.\n - Pilih jenis surat yang ingin diajukan.\n - Isi formulir pengajuan dengan lengkap.\n - Tunggu notifikasi persetujuan atau penolakan yang akan dikirim ke nomor WhatsApp yang terdaftar.\n ✅ [2] Datang Secara Langsung di Kantor Desa Limapoccoe\n - Datangi kantor desa pada jam kerja.\n - Bawa dokumen persyaratan sesuai dengan jenis surat yang ingin diurus.\n - Petugas pelayanan akan membantu proses pengajuan Anda secara langsung.\n"
   },
 

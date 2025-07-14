@@ -9,86 +9,39 @@ def dengan_footer(pesan_utama: str, state: str = "", q: list[str] = None) -> str
     if q is None:
         q = []
 
-    if state == "main_menu" and q == ["1"]:
-        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot."
-    elif state == "menu_ajukan" and q == ["1"]:
-        footer = "\n\n🟢 *Ketik angka pilihan Anda* (misal: `1`), atau ketik `selesai` untuk keluar dari chatbot."
-    elif state == "main_menu" and q == ["5"]:
-        footer = ""
-    else:
-        footer = "\n\n🟢 Ketik *menu* untuk kembali atau *selesai* untuk keluar dari chatbot."
-    return f"{pesan_utama}{footer}"
-
-def cari_dari_dataset(state: str, pesan: str) -> tuple[str | None, str | None]:
     for item in dataset:
-        if item.get("state") == state:
+        if item.get("state") == state and item.get("q") == q:
+            footer = item.get("footer")
+            if footer is not None:
+                return f"{pesan_utama}\n\n{footer}" if footer else pesan_utama
+
+def cari_dari_dataset(state: str, pesan: str):
+    pesan = pesan.lower()
+    for item in dataset:
+        if item.get("state") == state or item.get("state") == "*":
             for q in item.get("q", []):
                 if pesan == q.lower():
-                    return item.get("a"), item.get("next_state")
-    return None, None
+                    return item.get("a"), item.get("next_state"), item.get("q"), item.get("state")
+    return None, None, None, None
 
 def get_stateful_response(user_id: str, pesan: str) -> str:
     pesan = pesan.strip().lower()
-
-    greetings = ["halo", "hi", "hai", "assalamualaikum, pagi, siang, malam"]
-    help_menu = ["menu", "panduan", "bantuan", "help"]
-    exit_commands = ["selesai", "keluar", "akhiri", "stop", "end", "batal"]
-    thanks = ["terima kasih", "terimakasih", "makasih", "makasi", "thanks", 
-              "thank you", "trimakasih", "trims"]
-
-    if pesan in thanks:
-        return "🙏 Sama-sama!"
 
     if user_id not in user_state:
         user_state[user_id] = {"state": "main_menu"}
 
     state = user_state[user_id]["state"]
 
-    if pesan in help_menu or pesan in greetings:
-        user_state[user_id] = {
-            "state": "main_menu",
-            "q": ["1"]
-        }
-        return dengan_footer(
-            "👋 Hai, selamat datang di Chatbot Desa Limapoccoe!\n"
-            "Ada yang bisa kami bantu hari ini? Silakan pilih menu yang tersedia, ya 😊\n"
-            "1. Ajukan Surat\n"
-            "2. Pengaduan\n"
-            "3. Jadwal Posyandu\n"
-            "4. Jam Operasional\n"
-            "5. Hubungi Petugas",
-            "main_menu",
-            ["1"]
-        )
-
-    if pesan in exit_commands:
-        user_state[user_id]["state"] = "main_menu"
-        return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
-
-    if state == "done":
-        return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
-
-    digit_states = {
-        "main_menu": ["1", "2", "3", "4", "5"],
-        "menu_ajukan": ["1", "2"],
-        "syarat_pengajuan": [str(i) for i in range(1, 12)],
-        "konfirmasi_kontak": ["ya"]
-    }
-
-    if pesan.isdigit():
-        allowed = digit_states.get(state, [])
-        if pesan not in allowed:
-            return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
-
-    jawaban, next_state = cari_dari_dataset(state, pesan)
+    # Tangani input dari user
+    jawaban, next_state, matched_q, matched_state = cari_dari_dataset(state, pesan)
     if jawaban:
         if next_state:
             user_state[user_id]["state"] = next_state
         else:
-            if state == "syarat_pengajuan" and "konfirmasi kontak":
+            if state in ["syarat_pengajuan", "main_menu"]:
                 user_state[user_id]["state"] = "done"
-            elif state == "main_menu":
-                user_state[user_id]["state"] = "done"
-        return dengan_footer(jawaban, state, [pesan])
+        return dengan_footer(jawaban, matched_state, matched_q)
 
-    return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
+    # Fallback jika tidak ditemukan
+    fallback, _, _, _ = cari_dari_dataset("*", "__fallback__")
+    return fallback

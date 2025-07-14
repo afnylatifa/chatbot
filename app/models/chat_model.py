@@ -2,7 +2,6 @@ import json
 
 user_state = {}
 
-# Load dataset sekali di awal
 with open("app/dataset/dataset.json", "r", encoding="utf-8") as f:
     dataset = json.load(f)
 
@@ -34,22 +33,17 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
     greetings = ["halo", "hi", "hai", "assalamualaikum, pagi, siang, malam"]
     help_menu = ["menu", "panduan", "bantuan", "help"]
     exit_commands = ["selesai", "keluar", "akhiri", "stop", "end", "batal"]
-    thanks = [
-        "terima kasih", "terimakasih", "makasih", "makasi", "thanks", 
-        "thank you", "trimakasih", "trims"
-    ]
+    thanks = ["terima kasih", "terimakasih", "makasih", "makasi", "thanks", 
+              "thank you", "trimakasih", "trims"]
 
-    # ✅ Balas terima kasih kapan pun
     if pesan in thanks:
         return "🙏 Sama-sama!"
 
-    # Set default state jika user baru mulai
     if user_id not in user_state:
         user_state[user_id] = {"state": "main_menu"}
 
     state = user_state[user_id]["state"]
 
-    # ✅ Jika user ketik menu/greetings, kembalikan ke main menu
     if pesan in help_menu or pesan in greetings:
         user_state[user_id] = {
             "state": "main_menu",
@@ -67,20 +61,17 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
             ["1"]
         )
 
-    # ✅ Akhiri sesi jika user ketik selesai/dll
     if pesan in exit_commands:
         user_state[user_id]["state"] = "main_menu"
         return "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi."
 
-    # 🛑 Jika user sudah selesai dan belum ketik menu lagi
     if state == "done":
         return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
 
-    # 🎯 Validasi input angka hanya jika sesuai state
     digit_states = {
         "main_menu": ["1", "2", "3", "4", "5"],
         "menu_ajukan": ["1", "2"],
-        "syarat_pengajuan": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+        "syarat_pengajuan": [str(i) for i in range(1, 12)],
         "konfirmasi_kontak": ["ya"]
     }
 
@@ -89,19 +80,15 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
         if pesan not in allowed:
             return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
 
-    # 🔍 Cari jawaban berdasarkan state dan input user
     jawaban, next_state = cari_dari_dataset(state, pesan)
     if jawaban:
         if next_state:
             user_state[user_id]["state"] = next_state
         else:
-            # ✅ Jika dari syarat_pengajuan → akhiri sesi
             if state == "syarat_pengajuan" and "konfirmasi kontak":
                 user_state[user_id]["state"] = "done"
-            # ✅ Jika dari main_menu (pilihan 2–5) tanpa next_state → juga akhiri
             elif state == "main_menu":
                 user_state[user_id]["state"] = "done"
         return dengan_footer(jawaban, state, [pesan])
 
-    # ❓ Tidak dikenali
     return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."

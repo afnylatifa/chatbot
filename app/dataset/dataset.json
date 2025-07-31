@@ -137,7 +137,6 @@
   {
     "state": "*",
     "q": ["__fallback__"],
-    "a": "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama.",
-    "next_state": null
+    "a": "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
   }
 ]

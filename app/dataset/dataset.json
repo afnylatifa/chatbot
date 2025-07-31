@@ -132,7 +132,7 @@
     "state": "*",
     "q": ["selesai", "keluar", "akhiri", "stop", "end", "batal"],
     "a": "✅ Sesi diakhiri. Ketik *menu* untuk mulai lagi.",
-    "next_state": "main_menu"
+    "next_state": null
   },
   {
     "state": "*",

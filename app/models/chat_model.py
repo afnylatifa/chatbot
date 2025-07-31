@@ -37,20 +37,16 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
 
     state = user_state[user_id]["state"]
 
-    # Tangani input dari user
+    # Cari jawaban berdasarkan state
     jawaban, next_state, matched_q, matched_state = cari_dari_dataset(state, pesan)
+
     if jawaban:
         if next_state:
             user_state[user_id]["state"] = next_state
-        else:
-            if state in ["syarat_pengajuan", "main_menu"]:
-                user_state[user_id]["state"] = "done"
+        elif state in ["syarat_pengajuan", "main_menu"]:
+            user_state[user_id]["state"] = "done"
         return dengan_footer(jawaban, matched_state, matched_q)
 
-    # Fallback jika tidak ditemukan
+    # Jika tidak ditemukan, cari fallback
     fallback, _, matched_q, matched_state = cari_dari_dataset("*", "__fallback__")
-    if fallback:
-        return dengan_footer(fallback, matched_state, matched_q)
-    else:
-        return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
-
+    return dengan_footer(fallback or "❓ Maaf, pilihan tidak dikenali.", matched_state, matched_q)

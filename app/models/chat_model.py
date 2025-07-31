@@ -44,4 +44,8 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
 
     # Fallback jika tidak ditemukan
     fallback, _, matched_q, matched_state = cari_dari_dataset("*", "__fallback__")
-    return dengan_footer(fallback or "❓ Maaf, pilihan tidak dikenali.", matched_state, matched_q)
+    if fallback:
+        return dengan_footer(fallback, matched_state, matched_q)
+    else:
+        return "❓ Maaf, pilihan tidak dikenali. Ketik *menu* untuk kembali ke menu utama."
+

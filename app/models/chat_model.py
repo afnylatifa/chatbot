@@ -22,12 +22,7 @@ def cari_dari_dataset(state: str, pesan: str):
             for q in item.get("q", []):
                 if pesan == q.lower():
                     return item.get("a"), item.get("next_state"), item.get("q"), item.get("state")
-    # Jika tidak ketemu, coba cari __fallback__
-    for item in dataset:
-        if item.get("state") == "*" and "__fallback__" in item.get("q", []):
-            return item.get("a"), None, item.get("q"), item.get("state")
     return None, None, None, None
-
 
 def get_stateful_response(user_id: str, pesan: str) -> str:
     pesan = pesan.strip().lower()
@@ -37,16 +32,16 @@ def get_stateful_response(user_id: str, pesan: str) -> str:
 
     state = user_state[user_id]["state"]
 
-    # Cari jawaban berdasarkan state
+    # Tangani input dari user
     jawaban, next_state, matched_q, matched_state = cari_dari_dataset(state, pesan)
-
     if jawaban:
         if next_state:
             user_state[user_id]["state"] = next_state
-        elif state in ["syarat_pengajuan", "main_menu"]:
-            user_state[user_id]["state"] = "done"
+        else:
+            if state in ["syarat_pengajuan", "main_menu"]:
+                user_state[user_id]["state"] = "done"
         return dengan_footer(jawaban, matched_state, matched_q)
 
-    # Jika tidak ditemukan, cari fallback
+    # Fallback jika tidak ditemukan
     fallback, _, matched_q, matched_state = cari_dari_dataset("*", "__fallback__")
     return dengan_footer(fallback or "❓ Maaf, pilihan tidak dikenali.", matched_state, matched_q)

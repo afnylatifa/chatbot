@@ -1,4 +1,5 @@
 import json
+from datetime import datetime  # 🔄 Tambahan untuk waktu callback
 
 # Menyimpan state pengguna
 user_state = {}
@@ -41,9 +42,14 @@ def cari_dari_dataset(state: str, pesan: str):
 def get_stateful_response(user_id: str, pesan: str) -> str:
     pesan = pesan.strip().lower()
 
-    # Atur state awal user
+    # Atur state awal & catat waktu terakhir aktif user
     if user_id not in user_state:
-        user_state[user_id] = {"state": "main_menu"}
+        user_state[user_id] = {
+            "state": "main_menu",
+            "last_active": datetime.now()   # ⏱️ Tambahan
+        }
+    else:
+        user_state[user_id]["last_active"] = datetime.now()  # ⏱️ Tambahan
 
     state = user_state[user_id]["state"]
 

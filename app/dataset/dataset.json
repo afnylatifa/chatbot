@@ -117,12 +117,6 @@
   },
   {
     "state": "*",
-    "q": ["terima kasih", "terimakasih", "makasih", "makasi", "thanks", "thank you", "trimakasih", "trims"],
-    "a": "🙏 Sama-sama!",
-    "next_state": null
-  },
-  {
-    "state": "*",
     "q": ["menu", "panduan", "bantuan", "help", "halo", "hai", "hi", "assalamualaikum", "pagi", "siang", "malam"],
     "a": "👋 Hai, selamat datang di Chatbot Desa Limapoccoe!\nAda yang bisa kami bantu hari ini? Silakan pilih menu yang tersedia, ya 😊\n1. Ajukan Surat\n2. Pengaduan\n3. Jadwal Posyandu\n4. Jam Operasional\n5. Hubungi Petugas",
     "next_state": "main_menu",
